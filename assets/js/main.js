@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  $('#year').textContent = new Date().getFullYear();
+  const yr = $('#year'); if (yr) yr.textContent = new Date().getFullYear();
 
   // Reveal on scroll
   const revealEls = $$('.reveal');
@@ -21,9 +21,11 @@
     header.classList.toggle('bg-white/85', y > 12);
     header.classList.toggle('backdrop-blur-md', y > 12);
     header.classList.toggle('shadow-soft', y > 12);
-    const f = form.getBoundingClientRect();
-    const overForm = f.top < innerHeight && f.bottom > 0;
-    sticky.classList.toggle('translate-y-full', y < 500 || overForm);
+    if (sticky && form) {
+      const f = form.getBoundingClientRect();
+      const overForm = f.top < innerHeight && f.bottom > 0;
+      sticky.classList.toggle('translate-y-full', y < 500 || overForm);
+    }
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
@@ -48,5 +50,13 @@
       item.dataset.open = open;
       btn.setAttribute('aria-expanded', open);
     });
+  });
+
+  // Tally : à l'envoi du formulaire, redirection vers /merci (page de conversion Google Ads)
+  addEventListener('message', (e) => {
+    if (e.origin !== 'https://tally.so') return;
+    let d = e.data;
+    if (typeof d === 'string') { try { d = JSON.parse(d); } catch { return; } }
+    if (d && d.event === 'Tally.FormSubmitted') location.href = '/merci';
   });
 })();
