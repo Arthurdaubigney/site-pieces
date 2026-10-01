@@ -226,102 +226,8 @@
           </ul>
         </div>
 
-        <div class="reveal relative rounded-3xl border border-white/10 bg-white/[.04] p-5 backdrop-blur-sm sm:p-8" style="--i:2">
-          <form id="estimation-form" class="panel-swap space-y-6" novalidate action="https://formspree.io/f/REPLACE_ME" method="post" enctype="multipart/form-data">
-            <div>
-              <label for="type" class="label">Type de pièce <span class="text-gold-400" aria-hidden="true">*</span></label>
-              <select id="type" name="type" required class="field appearance-none">
-                <option value="" class="text-ink">Sélectionnez…</option>
-                <option value="faute" class="text-ink">Pièce fautée / erreur de frappe</option>
-                <option value="monaco" class="text-ink">Monaco (dont Grace Kelly)</option>
-                <option value="vatican" class="text-ink">Vatican / Saint-Marin</option>
-                <option value="commemorative" class="text-ink">Commémorative rare</option>
-                <option value="coffret" class="text-ink">Série BU / BE / coffret</option>
-                <option value="autre" class="text-ink">Je ne sais pas / autre</option>
-              </select>
-              <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-            </div>
-
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label for="pays" class="label">Pays émetteur</label>
-                <input id="pays" name="pays" type="text" autocomplete="off" placeholder="Ex. : Monaco, France…" class="field">
-              </div>
-              <div>
-                <label for="annee" class="label">Année</label>
-                <input id="annee" name="annee" type="text" inputmode="numeric" maxlength="4" placeholder="Ex. : 2015" class="field">
-              </div>
-            </div>
-
-            <div>
-              <label for="message" class="label">Détails observés <span class="font-normal text-white/50">(facultatif)</span></label>
-              <textarea id="message" name="message" rows="3" placeholder="Défaut, dessin particulier, état, coffret d'origine…" class="field resize-y"></textarea>
-            </div>
-
-            <fieldset>
-              <legend class="label">Photos de la pièce <span class="text-gold-400" aria-hidden="true">*</span></legend>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label class="drop group relative flex aspect-[4/3] cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-dashed border-white/25 bg-white/[.04] text-center transition-colors hover:border-gold-400 focus-within:border-gold-400 focus-within:ring-2 focus-within:ring-gold/40">
-                    <input type="file" name="recto" accept="image/*" required class="peer sr-only">
-                    <img alt="" class="preview absolute inset-0 hidden h-full w-full object-cover">
-                    <span class="drop-label flex flex-col items-center gap-2 px-3">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-gold-400" aria-hidden="true"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h7l1 1.5H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
-                      <span class="text-sm font-semibold">Photo recto</span>
-                      <span class="text-xs text-white/50">Touchez pour ajouter</span>
-                    </span>
-                  </label>
-                  <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-                </div>
-                <div>
-                  <label class="drop group relative flex aspect-[4/3] cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-dashed border-white/25 bg-white/[.04] text-center transition-colors hover:border-gold-400 focus-within:border-gold-400 focus-within:ring-2 focus-within:ring-gold/40">
-                    <input type="file" name="verso" accept="image/*" required class="peer sr-only">
-                    <img alt="" class="preview absolute inset-0 hidden h-full w-full object-cover">
-                    <span class="drop-label flex flex-col items-center gap-2 px-3">
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="text-gold-400" aria-hidden="true"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h7l1 1.5H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
-                      <span class="text-sm font-semibold">Photo verso</span>
-                      <span class="text-xs text-white/50">Touchez pour ajouter</span>
-                    </span>
-                  </label>
-                  <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-                </div>
-              </div>
-            </fieldset>
-
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label for="nom" class="label">Nom <span class="text-gold-400" aria-hidden="true">*</span></label>
-                <input id="nom" name="nom" type="text" required autocomplete="name" class="field">
-                <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-              </div>
-              <div>
-                <label for="email" class="label">E-mail <span class="text-gold-400" aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" required autocomplete="email" placeholder="vous@exemple.fr" class="field">
-                <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-              </div>
-            </div>
-
-            <div>
-              <label class="flex cursor-pointer items-start gap-3 text-sm text-white/70">
-                <input type="checkbox" name="consent" required class="mt-0.5 h-5 w-5 shrink-0 accent-[#a6823c]">
-                <span>J'accepte que mes informations soient utilisées pour traiter ma demande d'estimation. Aucune obligation de vente. <a href="#mentions" class="underline">Politique de confidentialité</a></span>
-              </label>
-              <p class="err mt-1.5 hidden text-sm text-red-300" role="alert"></p>
-            </div>
-
-            <button type="submit" class="btn btn-gold w-full !min-h-[56px] text-base">
-              <span class="btn-label">Recevoir mon estimation gratuite</span>
-            </button>
-            <p class="text-center text-xs text-white/50">Gratuit · Sans engagement · Réponse sous 48&nbsp;h</p>
-          </form>
-
-          <div id="success" class="panel-swap is-hidden flex flex-col items-center gap-4 py-10 text-center" aria-live="polite" tabindex="-1">
-            <span class="grid h-16 w-16 place-items-center rounded-full bg-gold/20 text-gold-400">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="check-path" d="M5 12.5 10 17.5 19 7"/></svg>
-            </span>
-            <h3 class="text-3xl">Demande bien reçue</h3>
-            <p class="max-w-sm text-white/70">Merci&nbsp;! Un numismate analyse votre pièce et vous répond par e-mail sous 48&nbsp;h.</p>
-          </div>
+        <div class="reveal relative overflow-hidden rounded-3xl bg-white p-2 shadow-soft sm:p-4" style="--i:2">
+          <iframe data-tally-src="https://tally.so/embed/Me0lOY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0" title="Formulaire d'estimation gratuite de pièce de 2 €" class="block w-full min-h-[640px]"></iframe>
         </div>
       </div>
     </section>
@@ -400,6 +306,7 @@
     <a href="#estimation" class="btn btn-primary w-full">Faire estimer ma pièce de 2&nbsp;€</a>
   </div>
 
+  <script async src="https://tally.so/widgets/embed.js" onload="Tally.loadEmbeds()" onerror="document.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function(e){e.src=e.dataset.tallySrc})"></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
