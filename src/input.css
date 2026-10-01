@@ -63,7 +63,17 @@
 .panel-swap { transition: opacity var(--duration-slow) ease-in-out, transform var(--duration-slow) var(--ease-smooth-out), filter var(--duration-slow) ease-in-out; }
 .panel-swap.is-hidden { opacity: 0; transform: translateY(8px); filter: blur(2px); pointer-events: none; position: absolute; inset: 0; visibility: hidden; }
 
+/* ---- Marquee (bandeau défilant) ---- */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; width: max-content; padding: 1rem 0 2rem; animation: marquee 45s linear infinite; will-change: transform; }
+.marquee-track > .coin-card { margin-right: 1.25rem; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
 @media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; }
+  .marquee-track > [aria-hidden="true"] { display: none; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; filter: none; transition: none; }
   .acc-panel, .acc-chevron, .card-lift, .card-img, .panel-swap { transition: none; }

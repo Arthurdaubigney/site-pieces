@@ -27,6 +27,19 @@
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+  // Mobile menu
+  const mbtn = $('#menu-btn'), mnav = $('#mobile-nav');
+  if (mbtn) {
+    const setMenu = (open) => {
+      mnav.classList.toggle('hidden', !open);
+      mbtn.setAttribute('aria-expanded', open);
+      header.classList.toggle('bg-white', open);
+    };
+    mbtn.addEventListener('click', () => setMenu(mnav.classList.contains('hidden')));
+    $$('a', mnav).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  }
+
   // FAQ accordion
   $$('.acc-item').forEach((item) => {
     const btn = $('.acc-btn', item);
